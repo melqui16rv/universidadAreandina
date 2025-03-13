@@ -1,13 +1,13 @@
 import socket
 import threading
 import random
-from functions import format_message, decode_message, bubble_sort
+from functions import formatear_mensaje, decodificar_mensaje, ordenamiento_burbuja
 
-HOST = '127.0.0.1'
-PORT = 65432
+SERVIDOR = '127.0.0.1'
+PUERTO = 65432
 
 clientes_conectados = {}
-lock = threading.Lock()
+candado = threading.Lock()
 servidor_activo = True
 
 def monitor_comandos():
@@ -20,31 +20,31 @@ def monitor_comandos():
             # Crear una conexión temporal para desbloquear accept()
             try:
                 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-                    s.connect((HOST, PORT))
+                    s.connect((SERVIDOR, PUERTO))
             except:
                 pass
             break
 
-def handle_client(conn, addr, client_id):
+def manejar_cliente(conexion, direccion, id_cliente):
     try:
-        print(f"Nuevo cliente {client_id} conectado desde {addr}")
+        print(f"Nuevo cliente {id_cliente} conectado desde {direccion}")
         aciertos_totales = 0
         desaciertos_totales = 0
         
         while True:
-            data = conn.recv(1024)
-            if not data:
+            datos = conexion.recv(1024)
+            if not datos:
                 break
             
-            message = decode_message(data)
-            if message.lower() == 'terminar':
+            mensaje = decodificar_mensaje(datos)
+            if mensaje.lower() == 'terminar':
                 resumen = f"Resumen final - Aciertos: {aciertos_totales}, Desaciertos: {desaciertos_totales}"
-                conn.send(format_message(resumen))
+                conexion.send(formatear_mensaje(resumen))
                 break
             
             try:
-                numero_objetivo = int(message)
-                print(f"\nCliente {client_id} envió el número: {numero_objetivo}")
+                numero_objetivo = int(mensaje)
+                print(f"\nCliente {id_cliente} envió el número: {numero_objetivo}")
                 
                 intentos_ronda = 0
                 aciertos_ronda = 0
@@ -70,11 +70,11 @@ def handle_client(conn, addr, client_id):
                         else:
                             response = f"Fallé con {numero_servidor}. Perdiste - No pude adivinar el número {numero_objetivo}. Intenté con los números: {numeros_intentados}"
                     
-                    conn.send(format_message(response))
+                    conexion.send(formatear_mensaje(response))
                     
                     # Si no es el último intento y no acertó, esperar confirmación
                     if intentos_ronda < 3 and numero_servidor != numero_objetivo:
-                        conf = conn.recv(1024)
+                        conf = conexion.recv(1024)
                         if not conf:
                             return
                 
@@ -87,57 +87,57 @@ def handle_client(conn, addr, client_id):
                 if desaciertos_ronda == 3:
                     resumen_ronda += f"\nPerdiste - El número que debía adivinar era: {numero_objetivo}"
                 
-                conn.send(format_message(resumen_ronda))
+                conexion.send(formatear_mensaje(resumen_ronda))
                 
                 # Terminar si hubo 3 desaciertos
                 if desaciertos_ronda == 3:
                     break
                 
             except ValueError:
-                conn.send(format_message("Error: Número no válido"))
+                conexion.send(formatear_mensaje("Error: Número no válido"))
             
     except Exception as e:
-        print(f"Error con cliente {client_id}: {e}")
+        print(f"Error con cliente {id_cliente}: {e}")
     finally:
-        with lock:
-            del clientes_conectados[client_id]
-            print(f"\nCliente {client_id} desconectado")
+        with candado:
+            del clientes_conectados[id_cliente]
+            print(f"\nCliente {id_cliente} desconectado")
             print(f"Clientes conectados: {list(clientes_conectados.keys())}")
-        conn.close()
+        conexion.close()
 
 def main():
     try:
-        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server:
-            server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-            server.bind((HOST, PORT))
-            server.listen()
-            print(f"Servidor iniciado en {HOST}:{PORT}")
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as servidor:
+            servidor.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+            servidor.bind((SERVIDOR, PUERTO))
+            servidor.listen()
+            print(f"Servidor iniciado en {SERVIDOR}:{PUERTO}")
             
             # Iniciar hilo monitor de comandos
             monitor_thread = threading.Thread(target=monitor_comandos, daemon=True)
             monitor_thread.start()
             
-            client_counter = 0
+            contador_clientes = 0
             
             while servidor_activo:
                 try:
-                    conn, addr = server.accept()
+                    conexion, direccion = servidor.accept()
                     if not servidor_activo:
-                        conn.close()
+                        conexion.close()
                         break
                         
-                    client_counter += 1
-                    client_id = f"Cliente_{client_counter}"
+                    contador_clientes += 1
+                    id_cliente = f"Cliente_{contador_clientes}"
                     
-                    with lock:
-                        clientes_conectados[client_id] = addr
+                    with candado:
+                        clientes_conectados[id_cliente] = direccion
                         print(f"\nClientes conectados: {list(clientes_conectados.keys())}")
                     
-                    client_thread = threading.Thread(
-                        target=handle_client,
-                        args=(conn, addr, client_id)
+                    hilo_cliente = threading.Thread(
+                        target=manejar_cliente,
+                        args=(conexion, direccion, id_cliente)
                     )
-                    client_thread.start()
+                    hilo_cliente.start()
                 except socket.error:
                     if not servidor_activo:
                         break
@@ -146,9 +146,9 @@ def main():
         print(f"Error en el servidor: {e}")
     finally:
         # Cerrar conexiones de clientes activos
-        with lock:
-            for client_id in list(clientes_conectados.keys()):
-                del clientes_conectados[client_id]
+        with candado:
+            for id_cliente in list(clientes_conectados.keys()):
+                del clientes_conectados[id_cliente]
         print("\nServidor cerrado correctamente")
 
 if __name__ == "__main__":

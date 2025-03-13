@@ -2,26 +2,26 @@ import random
 import threading
 import time
 
-def bubble_sort(array):
-    n = len(array)
+def ordenamiento_burbuja(arreglo):
+    n = len(arreglo)
     for i in range(n):
         for j in range(0, n - i - 1):
-            if array[j] > array[j + 1]:
-                array[j], array[j + 1] = array[j + 1], array[j]
-    return array
+            if arreglo[j] > arreglo[j + 1]:
+                arreglo[j], arreglo[j + 1] = arreglo[j + 1], arreglo[j]
+    return arreglo
 
-def generate_random_number():
+def generar_numero_aleatorio():
     return random.randint(1, 10)
 
-def generate_numbers_thread(numbers, lock):
+def generar_numeros_hilo(numeros, candado):
     while True:
-        with lock:
-            if len(numbers) < 5:
-                numbers.append(generate_random_number())
+        with candado:
+            if len(numeros) < 5:
+                numeros.append(generar_numero_aleatorio())
         time.sleep(1)
 
-def format_message(message):
-    return message.encode('utf-8')
+def formatear_mensaje(mensaje):
+    return mensaje.encode('utf-8')
 
-def decode_message(message):
-    return message.decode('utf-8')
+def decodificar_mensaje(mensaje):
+    return mensaje.decode('utf-8')

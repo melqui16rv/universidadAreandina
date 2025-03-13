@@ -1,31 +1,29 @@
 import socket
 import threading
 import time
-from server.functions import generate_numbers_thread, format_message, decode_message, bubble_sort
+from server.functions import generar_numeros_hilo, formatear_mensaje, decodificar_mensaje, ordenamiento_burbuja
 
 SERVIDOR = '127.0.0.1'
 PUERTO = 65432
-TIMEOUT = 5
+TIEMPO_ESPERA = 5
 
 def jugar_ronda(cliente, numero_seleccionado):
     print(f"\nNúmero seleccionado: {numero_seleccionado}")
     
-    # Siempre recibir 3 intentos
     for intento in range(3):
         try:
-            respuesta = decode_message(cliente.recv(1024))
+            respuesta = decodificar_mensaje(cliente.recv(1024))
             print(f"Respuesta del servidor: {respuesta}")
             
-            if intento < 2:  # Si no es el último intento
+            if intento < 2:
                 confirmacion = input("\nPresione Enter para el siguiente intento...")
-                cliente.send(format_message("siguiente"))
+                cliente.send(formatear_mensaje("siguiente"))
         except socket.error as e:
             print(f"Error de conexión: {e}")
             return True
     
     try:
-        # Recibir resumen de la ronda
-        resumen = decode_message(cliente.recv(1024))
+        resumen = decodificar_mensaje(cliente.recv(1024))
         print(resumen)
     except socket.error as e:
         print(f"Error al recibir resumen: {e}")
@@ -37,13 +35,11 @@ def main():
     try:
         print(f"Intentando conectar al servidor {SERVIDOR}:{PUERTO}...")
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as cliente:
-            cliente.settimeout(TIMEOUT)
-            # Intentar conectar con reintento
+            cliente.settimeout(TIEMPO_ESPERA)
             max_intentos = 5
             for intento in range(max_intentos):
                 try:
                     cliente.connect((SERVIDOR, PUERTO))
-                    # Obtener información del socket local
                     direccion_local = cliente.getsockname()
                     print(f"¡Conectado al servidor desde el puerto local {direccion_local[1]}!")
                     break
@@ -57,9 +53,8 @@ def main():
             numeros = []
             candado = threading.Lock()
             
-            # Iniciar hilo generador de números
             generador_numeros = threading.Thread(
-                target=generate_numbers_thread,
+                target=generar_numeros_hilo,
                 args=(numeros, candado),
                 daemon=True
             )
@@ -72,10 +67,9 @@ def main():
                             nums_generados = numeros.copy()
                             numeros.clear()
                         
-                        nums_ordenados = bubble_sort(nums_generados)
+                        nums_ordenados = ordenamiento_burbuja(nums_generados)
                         print("\nNúmeros generados y ordenados:", nums_ordenados)
                         
-                        # Selección del número
                         while True:
                             try:
                                 seleccion = int(input("\nSeleccione uno de los números mostrados: "))
@@ -85,11 +79,9 @@ def main():
                             except ValueError:
                                 print("Error: Ingrese un número válido.")
                         
-                        # Enviar número y procesar intentos
-                        cliente.send(format_message(str(seleccion)))
+                        cliente.send(formatear_mensaje(str(seleccion)))
                         perdio_servidor = jugar_ronda(cliente, seleccion)
                         
-                        # Preguntar si quiere jugar otra ronda
                         while True:
                             continuar = input("\n¿Desea jugar otra ronda? (s/n): ").lower()
                             if continuar in ['s', 'n']:
@@ -97,8 +89,8 @@ def main():
                             print("Por favor, responda 's' para sí o 'n' para no")
                         
                         if continuar == 'n':
-                            cliente.send(format_message('terminar'))
-                            respuesta_final = decode_message(cliente.recv(1024))
+                            cliente.send(formatear_mensaje('terminar'))
+                            respuesta_final = decodificar_mensaje(cliente.recv(1024))
                             print(f"\n{respuesta_final}")
                             break
                     
