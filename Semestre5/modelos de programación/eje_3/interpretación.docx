@@ -1,0 +1,14 @@
+Nombre de la tarea
+Desarrollo de hilos y socket
+Objetivo de aprendizaje
+Construir una aplicación que aplique las temáticas vistas en el eje 3, sobre hilos y socket
+en python.
+Descripción de la tarea:
+Construir una aplicación en python que permite aplicar el tema de hilos y socket, la aplicación consiste en:
+Construir un juego en el que se generan números aleatorios a través de hilos por parte del cliente.
+Establecer una comunicación entre el cliente y el servidor para que el servidor adivine los números generados por el cliente.
+Contabilizar los aciertos y desaciertos cuando finalice la aplicación.
+Cuando el servidor lleve 3 desaciertos seguidos debe salir un mensaje de "Perdiste".
+Terminar la aplicación cuando el cliente envíe la palabra "terminar".
+
+Construya el código de programación que dé solución a la descripción de la actividad,
