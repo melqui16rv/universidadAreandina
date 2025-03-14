@@ -49,10 +49,14 @@ def manejar_cliente(conexion, direccion, id_cliente):
                 intentos_ronda = 0
                 aciertos_ronda = 0
                 desaciertos_ronda = 0
-                numeros_intentados = []  # Lista para guardar los números intentados
+                numeros_intentados = []
                 
-                # Siempre hacer los 3 intentos
+                # Modificación: solo continuar si no ha adivinado
+                adivinado = False
                 for i in range(3):
+                    if adivinado:
+                        break
+                        
                     intentos_ronda += 1
                     numero_servidor = random.randint(1, 10)
                     numeros_intentados.append(numero_servidor)
@@ -61,23 +65,22 @@ def manejar_cliente(conexion, direccion, id_cliente):
                         response = f"¡El número es {numero_objetivo}! Lo adiviné en el intento {intentos_ronda} de 3"
                         aciertos_ronda += 1
                         aciertos_totales += 1
+                        adivinado = True
                     else:
                         desaciertos_ronda += 1
                         desaciertos_totales += 1
                         response = f"Fallé con {numero_servidor}. Intento {intentos_ronda} de 3"
                         if intentos_ronda < 3:
                             response += f". Me quedan {3-intentos_ronda} intentos"
-                        else:
-                            response = f"Fallé con {numero_servidor}. Perdiste - No pude adivinar el número {numero_objetivo}. Intenté con los números: {numeros_intentados}"
                     
                     conexion.send(formatear_mensaje(response))
                     
-                    # Si no es el último intento y no acertó, esperar confirmación
-                    if intentos_ronda < 3 and numero_servidor != numero_objetivo:
+                    # Solo esperar confirmación si no adivinó y no es el último intento
+                    if not adivinado and intentos_ronda < 3:
                         conf = conexion.recv(1024)
                         if not conf:
                             return
-                
+
                 # Enviar resumen de la ronda
                 resumen_ronda = f"\nRonda finalizada - Total intentos: {intentos_ronda}"
                 resumen_ronda += f"\nNúmeros intentados: {numeros_intentados}"

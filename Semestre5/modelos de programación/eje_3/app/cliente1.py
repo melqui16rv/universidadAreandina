@@ -2,6 +2,7 @@ import socket
 import threading
 import time
 from server.functions import generar_numeros_hilo, formatear_mensaje, decodificar_mensaje, ordenamiento_burbuja
+from arbol.arbol_binario import ArbolBinario
 
 SERVIDOR = '127.0.0.1'
 PUERTO = 65432
@@ -31,7 +32,18 @@ def jugar_ronda(cliente, numero_seleccionado):
     
     return "Perdiste" in resumen
 
+def mostrar_menu_arbol(arbol):
+    print("\n** MENÚ DEL ÁRBOL **")
+    print("1. Agregar número al árbol")
+    print("2. Visualizar árbol (orden ascendente)")
+    print("3. Visualizar estructura del árbol")
+    print("4. Jugar a adivinar número")
+    print("5. Salir")
+    opcion = input("Seleccione una opción: ")
+    return opcion
+
 def main():
+    arbol = ArbolBinario()
     try:
         print(f"Intentando conectar al servidor {SERVIDOR}:{PUERTO}...")
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as cliente:
@@ -50,56 +62,59 @@ def main():
                     else:
                         raise
 
-            numeros = []
-            candado = threading.Lock()
-            
-            generador_numeros = threading.Thread(
-                target=generar_numeros_hilo,
-                args=(numeros, candado),
-                daemon=True
-            )
-            generador_numeros.start()
-            
             while True:
-                try:
-                    if len(numeros) >= 5:
-                        with candado:
-                            nums_generados = numeros.copy()
-                            numeros.clear()
-                        
-                        nums_ordenados = ordenamiento_burbuja(nums_generados)
-                        print("\nNúmeros generados y ordenados:", nums_ordenados)
-                        
-                        while True:
-                            try:
-                                seleccion = int(input("\nSeleccione uno de los números mostrados: "))
-                                if seleccion in nums_ordenados:
-                                    break
-                                print("Error: Por favor seleccione uno de los números mostrados.")
-                            except ValueError:
-                                print("Error: Ingrese un número válido.")
-                        
-                        cliente.send(formatear_mensaje(str(seleccion)))
-                        perdio_servidor = jugar_ronda(cliente, seleccion)
-                        
-                        while True:
-                            continuar = input("\n¿Desea jugar otra ronda? (s/n): ").lower()
-                            if continuar in ['s', 'n']:
-                                break
-                            print("Por favor, responda 's' para sí o 'n' para no")
-                        
-                        if continuar == 'n':
-                            cliente.send(formatear_mensaje('terminar'))
-                            respuesta_final = decodificar_mensaje(cliente.recv(1024))
-                            print(f"\n{respuesta_final}")
-                            break
+                opcion = mostrar_menu_arbol(arbol)
+                
+                if opcion == "1":
+                    try:
+                        numero = int(input("Ingrese un número para agregar al árbol: "))
+                        arbol.insertar(numero)
+                        print(f"Número {numero} agregado al árbol.")
+                    except ValueError:
+                        print("Por favor ingrese un número válido.")
+
+                elif opcion == "2":
+                    elementos = arbol.obtener_elementos()
+                    if elementos:
+                        print("\nElementos del árbol (ordenados):")
+                        print(ordenamiento_burbuja(elementos.copy()))
+                    else:
+                        print("El árbol está vacío.")
+
+                elif opcion == "3":
+                    print("\nEstructura del árbol:")
+                    print(arbol.visualizar_arbol())
+
+                elif opcion == "4":
+                    if arbol.cantidad_elementos() < 5:
+                        print("Debe tener al menos 5 elementos en el árbol para jugar.")
+                        continue
                     
-                    time.sleep(0.5)
-                            
-                except Exception as e:
-                    print(f"Error: {e}")
+                    elementos = arbol.obtener_elementos()
+                    elementos_ordenados = ordenamiento_burbuja(elementos.copy())
+                    print("\nNúmeros disponibles:", elementos_ordenados)
+                    
+                    while True:
+                        try:
+                            seleccion = int(input("\nSeleccione uno de los números mostrados: "))
+                            if seleccion in elementos_ordenados:
+                                break
+                            print("Error: Por favor seleccione uno de los números mostrados.")
+                        except ValueError:
+                            print("Error: Ingrese un número válido.")
+                    
+                    cliente.send(formatear_mensaje(str(seleccion)))
+                    perdio_servidor = jugar_ronda(cliente, seleccion)
+
+                elif opcion == "5":
+                    cliente.send(formatear_mensaje('terminar'))
+                    respuesta_final = decodificar_mensaje(cliente.recv(1024))
+                    print(f"\n{respuesta_final}")
                     break
-    
+
+                else:
+                    print("Opción no válida. Por favor intente de nuevo.")
+
     except ConnectionRefusedError:
         print("No se pudo conectar al servidor. Asegúrate de que el servidor esté en ejecución.")
     except Exception as e:
