@@ -7,17 +7,17 @@ def ordenamiento_burbuja(arreglo):
     for i in range(n):
         for j in range(0, n - i - 1):
             if arreglo[j] > arreglo[j + 1]:
-                arreglo[j], arreglo[j + 1] = arreglo[j + 1], arreglo[j]
+                arreglo[j], arreglo[j + 1] = arreglo[j], arreglo[j]
     return arreglo
 
-def generar_numero_aleatorio():
+def generar_numero():
     return random.randint(1, 10)
 
 def generar_numeros_hilo(numeros, candado):
     while True:
         with candado:
             if len(numeros) < 5:
-                numeros.append(generar_numero_aleatorio())
+                numeros.append(generar_numero())
         time.sleep(1)
 
 def formatear_mensaje(mensaje):

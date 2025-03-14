@@ -6,7 +6,7 @@ from functions import formatear_mensaje, decodificar_mensaje, ordenamiento_burbu
 SERVIDOR = '127.0.0.1'
 PUERTO = 65432
 
-clientes_conectados = {}
+clientes = {}
 candado = threading.Lock()
 servidor_activo = True
 
@@ -17,7 +17,6 @@ def monitor_comandos():
         if comando.lower() == 'apagar':
             print("\nApagando servidor...")
             servidor_activo = False
-            # Crear una conexión temporal para desbloquear accept()
             try:
                 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                     s.connect((SERVIDOR, PUERTO))
@@ -28,8 +27,8 @@ def monitor_comandos():
 def manejar_cliente(conexion, direccion, id_cliente):
     try:
         print(f"Nuevo cliente {id_cliente} conectado desde {direccion}")
-        aciertos_totales = 0
-        desaciertos_totales = 0
+        aciertos = 0
+        desaciertos = 0
         
         while True:
             datos = conexion.recv(1024)
@@ -38,61 +37,60 @@ def manejar_cliente(conexion, direccion, id_cliente):
             
             mensaje = decodificar_mensaje(datos)
             if mensaje.lower() == 'terminar':
-                resumen = f"Resumen final - Aciertos: {aciertos_totales}, Desaciertos: {desaciertos_totales}"
+                resumen = f"Resumen final - Aciertos: {aciertos}, Desaciertos: {desaciertos}"
                 conexion.send(formatear_mensaje(resumen))
                 break
             
             try:
-                numero_objetivo = int(mensaje)
-                print(f"\nCliente {id_cliente} envió el número: {numero_objetivo}")
+                objetivo = int(mensaje)
+                print(f"\nCliente {id_cliente} envió el número: {objetivo}")
                 
-                intentos_ronda = 0
+                disponibles = list(map(int, decodificar_mensaje(conexion.recv(1024)).split(',')))
+                print(f"Números disponibles: {disponibles}")
+                
+                intentos = 0
                 aciertos_ronda = 0
                 desaciertos_ronda = 0
-                numeros_intentados = []
+                intentados = []
                 
-                # Modificación: solo continuar si no ha adivinado
                 adivinado = False
                 for i in range(3):
                     if adivinado:
                         break
                         
-                    intentos_ronda += 1
-                    numero_servidor = random.randint(1, 10)
-                    numeros_intentados.append(numero_servidor)
+                    intentos += 1
+                    numero_servidor = random.choice(disponibles)
+                    intentados.append(numero_servidor)
                     
-                    if numero_servidor == numero_objetivo:
-                        response = f"¡El número es {numero_objetivo}! Lo adiviné en el intento {intentos_ronda} de 3"
+                    if numero_servidor == objetivo:
+                        response = f"¡El número es {objetivo}! Lo adiviné en el intento {intentos} de 3"
                         aciertos_ronda += 1
-                        aciertos_totales += 1
+                        aciertos += 1
                         adivinado = True
                     else:
                         desaciertos_ronda += 1
-                        desaciertos_totales += 1
-                        response = f"Fallé con {numero_servidor}. Intento {intentos_ronda} de 3"
-                        if intentos_ronda < 3:
-                            response += f". Me quedan {3-intentos_ronda} intentos"
+                        desaciertos += 1
+                        response = f"Fallé con {numero_servidor}. Intento {intentos} de 3"
+                        if intentos < 3:
+                            response += f". Me quedan {3-intentos} intentos"
                     
                     conexion.send(formatear_mensaje(response))
                     
-                    # Solo esperar confirmación si no adivinó y no es el último intento
-                    if not adivinado and intentos_ronda < 3:
+                    if not adivinado and intentos < 3:
                         conf = conexion.recv(1024)
                         if not conf:
                             return
 
-                # Enviar resumen de la ronda
-                resumen_ronda = f"\nRonda finalizada - Total intentos: {intentos_ronda}"
-                resumen_ronda += f"\nNúmeros intentados: {numeros_intentados}"
+                resumen_ronda = f"\nRonda finalizada - Total intentos: {intentos}"
+                resumen_ronda += f"\nNúmeros intentados: {intentados}"
                 resumen_ronda += f"\nResultado: {aciertos_ronda} aciertos, {desaciertos_ronda} desaciertos en esta ronda"
-                resumen_ronda += f"\nScore total - Aciertos: {aciertos_totales}, Desaciertos: {desaciertos_totales}"
+                resumen_ronda += f"\nScore total - Aciertos: {aciertos}, Desaciertos: {desaciertos}"
                 
                 if desaciertos_ronda == 3:
-                    resumen_ronda += f"\nPerdiste - El número que debía adivinar era: {numero_objetivo}"
+                    resumen_ronda += f"\nPerdiste - El número que debía adivinar era: {objetivo}"
                 
                 conexion.send(formatear_mensaje(resumen_ronda))
                 
-                # Terminar si hubo 3 desaciertos
                 if desaciertos_ronda == 3:
                     break
                 
@@ -103,9 +101,9 @@ def manejar_cliente(conexion, direccion, id_cliente):
         print(f"Error con cliente {id_cliente}: {e}")
     finally:
         with candado:
-            del clientes_conectados[id_cliente]
+            del clientes[id_cliente]
             print(f"\nCliente {id_cliente} desconectado")
-            print(f"Clientes conectados: {list(clientes_conectados.keys())}")
+            print(f"Clientes conectados: {list(clientes.keys())}")
         conexion.close()
 
 def main():
@@ -116,11 +114,10 @@ def main():
             servidor.listen()
             print(f"Servidor iniciado en {SERVIDOR}:{PUERTO}")
             
-            # Iniciar hilo monitor de comandos
             monitor_thread = threading.Thread(target=monitor_comandos, daemon=True)
             monitor_thread.start()
             
-            contador_clientes = 0
+            contador = 0
             
             while servidor_activo:
                 try:
@@ -129,12 +126,12 @@ def main():
                         conexion.close()
                         break
                         
-                    contador_clientes += 1
-                    id_cliente = f"Cliente_{contador_clientes}"
+                    contador += 1
+                    id_cliente = f"Cliente_{contador}"
                     
                     with candado:
-                        clientes_conectados[id_cliente] = direccion
-                        print(f"\nClientes conectados: {list(clientes_conectados.keys())}")
+                        clientes[id_cliente] = direccion
+                        print(f"\nClientes conectados: {list(clientes.keys())}")
                     
                     hilo_cliente = threading.Thread(
                         target=manejar_cliente,
@@ -148,10 +145,9 @@ def main():
     except Exception as e:
         print(f"Error en el servidor: {e}")
     finally:
-        # Cerrar conexiones de clientes activos
         with candado:
-            for id_cliente in list(clientes_conectados.keys()):
-                del clientes_conectados[id_cliente]
+            for id_cliente in list(clientes.keys()):
+                del clientes[id_cliente]
         print("\nServidor cerrado correctamente")
 
 if __name__ == "__main__":

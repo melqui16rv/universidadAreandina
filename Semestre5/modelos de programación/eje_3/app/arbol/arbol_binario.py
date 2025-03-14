@@ -4,16 +4,19 @@ class Nodo:
         self.izquierda = None
         self.derecha = None
         self.padre = None
+
 class ArbolBinario:
     def __init__(self):
         self.raiz = None
         self.cantidad = 0
 
     def insertar(self, valor):
+        # Crear un nuevo nodo con el valor dado
         nuevo_nodo = Nodo(valor)
         self.cantidad += 1
         
         if not self.raiz:
+            # Si el árbol está vacío, el nuevo nodo se convierte en la raíz
             self.raiz = nuevo_nodo
             return
             
@@ -21,18 +24,21 @@ class ArbolBinario:
         while True:
             if valor < actual.valor:
                 if actual.izquierda is None:
+                    # Insertar el nuevo nodo en la subárbol izquierdo
                     actual.izquierda = nuevo_nodo
                     nuevo_nodo.padre = actual
                     break
                 actual = actual.izquierda
             else:
                 if actual.derecha is None:
+                    # Insertar el nuevo nodo en la subárbol derecho
                     actual.derecha = nuevo_nodo
                     nuevo_nodo.padre = actual
                     break
                 actual = actual.derecha
 
     def obtener_elementos(self):
+        # Obtener los elementos del árbol en orden ascendente
         elementos = []
         def inorden(nodo):
             if nodo:
@@ -43,6 +49,7 @@ class ArbolBinario:
         return elementos
 
     def cantidad_elementos(self):
+        # Devolver la cantidad de elementos en el árbol
         return self.cantidad
 
     def visualizar_arbol(self):
@@ -50,6 +57,7 @@ class ArbolBinario:
             return "Árbol vacío"
 
         def get_height(node):
+            # Obtener la altura del árbol
             if not node:
                 return 0
             return max(get_height(node.izquierda), get_height(node.derecha)) + 1
