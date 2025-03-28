@@ -1,5 +1,6 @@
 from graphviz import Digraph
 
+
 class Nodo:
     def __init__(self, valor):
         self.valor = valor

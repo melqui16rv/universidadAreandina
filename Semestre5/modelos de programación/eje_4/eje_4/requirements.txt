@@ -1,0 +1,2 @@
+Flask==2.2.5         # Solo si usas Flask para visualización web
+graphviz             # Si haces visualización del árbol
