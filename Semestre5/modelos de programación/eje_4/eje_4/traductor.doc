@@ -1,0 +1,62 @@
+Este Magic Loop crea un endpoint de API que recibe un texto y un código de idioma de destino, traduce el texto usando un LLM y retorna el texto traducido en una respuesta JSON.
+
+Variables
+
+Trigger:
+
+
+API Call
+API Call 🚇
+Trigger this Magic Loop by calling its API:
+
+url
+curl
+typescript
+python
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -d '{ "text": "Hola mundo", "targetLanguage": "en" }' \
+  "https://magicloops.dev/api/loop/f07aa2b8-e360-46e4-aedd-8bc5c7746a25/run";
+If this Loop is called when deactivated, it will not run, but the payload will be displayed below for testing.
+
+Output:{
+text:"Hola mundo"
+targetLanguage:"en"
+}
+Output Variable: $API_TRIGGER_BLOCK_OUTPUT
+Characters: 48 / 50,000
+
+Fix
+Open Options
+LLM 🪄
+
+Traduce el texto proporcionado en $API_TRIGGER_BLOCK_OUTPUT. Extrae el texto del campo 'text' y el código del idioma del campo 'targetLanguage'. Realiza la traducción de manera precisa y devuelve únicamente el texto traducido.
+Loop Creator sees this block's input+output, the description above, & the fields below
+
+Generate
+
+Show Details
+Run
+LLM reply...
+
+Output Variable: $LLM_BLOCK_OUTPUT
+Characters: 0 / 50,000
+
+Fix
+Open Options
+API Response 🚇
+
+Devuelve el texto traducido obtenido de $LLM_BLOCK_OUTPUT en formato JSON con la clave 'translatedText'. Este será el resultado de la respuesta a la solicitud de la API.
+Loop Creator sees this block's input+output, the description above, & the fields below
+
+Generate
+
+Show Details
+Run
+API response to send to caller...
+
+Output Variable: $API_NOTIFY_BLOCK_OUTPUT
+Characters: 0 / 50,000
+
+Fix
+I need help!

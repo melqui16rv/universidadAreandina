@@ -12,8 +12,10 @@ class ArbolBinario:
     def __init__(self):
         self.raiz = None
         self.cantidad = 0
+        self.orden_insercion = []  # Nueva lista para guardar el orden de inserción
 
     def insertar(self, valor):
+        self.orden_insercion.append(valor)  # Guardar el orden de inserción
         # Crear un nuevo nodo con el valor dado
         nuevo_nodo = Nodo(valor)
         self.cantidad += 1
@@ -51,6 +53,9 @@ class ArbolBinario:
         inorden(self.raiz)
         return elementos
 
+    def obtener_elementos_insercion(self):
+        return self.orden_insercion
+
     def cantidad_elementos(self):
         # Devolver la cantidad de elementos en el árbol
         return self.cantidad
@@ -75,3 +80,9 @@ class ArbolBinario:
         agregar_nodos(dot, self.raiz)
         dot.render('arbol_binario', format='png', view=True)
         return "Visualización generada y guardada como 'arbol_binario.png'"
+
+    def borrar_arbol(self):
+        self.raiz = None
+        self.cantidad = 0
+        self.orden_insercion = []  # Limpiar también el orden de inserción
+        return "Árbol binario borrado completamente"

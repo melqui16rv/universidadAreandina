@@ -1,7 +1,9 @@
 from .manejador import manejar_cliente
 from .arbol_binario import ArbolBinario
+from .control import apagar, obtener_estado_apagado
 import socket
 import threading
+import sys
 
 SERVIDOR = '127.0.0.1'
 PUERTO = 65432
@@ -16,17 +18,24 @@ def iniciar_servidor():
             servidor.listen()
             print(f"Servidor escuchando en {SERVIDOR}:{PUERTO}...")
 
-            while True:
-                conexion, direccion = servidor.accept()
-                print(f"Cliente conectado desde {direccion}")
-                hilo = threading.Thread(target=manejar_cliente, 
-                                     args=(conexion, direccion, arbol_binario, candado))
-                hilo.start()
+            while not obtener_estado_apagado():
+                try:
+                    servidor.settimeout(1)
+                    conexion, direccion = servidor.accept()
+                    print(f"Cliente conectado desde {direccion}")
+                    hilo = threading.Thread(target=manejar_cliente, 
+                                             args=(conexion, direccion, arbol_binario, candado))
+                    hilo.start()
+                except socket.timeout:
+                    continue
+                except Exception as e:
+                    print(f"Error en la conexión: {e}")
 
     except Exception as e:
         print(f"Error en el servidor: {e}")
     finally:
-        print("Servidor finalizado.")
+        print("Servidor apagado correctamente.")
+        sys.exit(0)  # Asegura que el programa termine completamente
 
 
 if __name__ == "__main__":
