@@ -15,6 +15,11 @@ class ArbolBinario:
         self.orden_insercion = []  # Nueva lista para guardar el orden de inserción
 
     def insertar(self, valor):
+        # Validar si el valor ya existe en el árbol
+        if valor in self.obtener_elementos():
+            print(f"El valor {valor} ya existe en el árbol. Por favor, inserte otro número.")
+            return
+
         self.orden_insercion.append(valor)  # Guardar el orden de inserción
         # Crear un nuevo nodo con el valor dado
         nuevo_nodo = Nodo(valor)
@@ -23,6 +28,8 @@ class ArbolBinario:
         if not self.raiz:
             # Si el árbol está vacío, el nuevo nodo se convierte en la raíz
             self.raiz = nuevo_nodo
+            # Actualizar la visualización del árbol
+            self.visualizar_arbol()
             return
             
         actual = self.raiz
@@ -42,6 +49,9 @@ class ArbolBinario:
                     break
                 actual = actual.derecha
 
+        # Actualizar la visualización del árbol
+        self.visualizar_arbol()
+
     def obtener_elementos(self):
         # Obtener los elementos del árbol en orden ascendente
         elementos = []
@@ -60,7 +70,7 @@ class ArbolBinario:
         # Devolver la cantidad de elementos en el árbol
         return self.cantidad
 
-    def visualizar_arbol(self):
+    def visualizar_arbol(self, ruta_guardado='/Users/melquiromero/Documents/GitHub/universidadAreandina/Semestre5/modelos de programación/eje_4/eje_4/vistaArbol/arbol_binario'):
         if not self.raiz:
             return "Árbol vacío"
 
@@ -78,8 +88,8 @@ class ArbolBinario:
                     agregar_nodos(dot, nodo.derecha)
 
         agregar_nodos(dot, self.raiz)
-        dot.render('arbol_binario', format='png', view=True)
-        return "Visualización generada y guardada como 'arbol_binario.png'"
+        dot.render(ruta_guardado, format='png', view=True)
+        return f"Visualización generada y guardada como '{ruta_guardado}.png'"
 
     def borrar_arbol(self):
         self.raiz = None
