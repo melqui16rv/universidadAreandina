@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control del Servidor</title>
+</head>
+<body>
+    <h1>Control del Servidor</h1>
+    <p>Estado actual: {{ estado }}</p>
+    <form method="POST">
+        {% if servidor_activo %}
+            <button type="submit" name="accion" value="apagar">Apagar Servidor</button>
+        {% else %}
+            <button type="submit" name="accion" value="activar">Activar Servidor</button>
+        {% endif %}
+    </form>
+</body>
+</html>

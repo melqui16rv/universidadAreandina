@@ -65,17 +65,16 @@ def mostrar_menu():
     print("2. Modo manual (ingresar números uno a uno)")
     print("3. Chatear con el servidor")
     print("4. Borrar árbol binario")
-    print("5. Apagar servidor")
-    print("6. Salir")
-    print("7. Ver datos del árbol (orden de inserción)")
-    print("8. Ver datos del árbol ordenados")
+    print("5. Salir")
+    print("6. Ver datos del árbol (orden de inserción)")
+    print("7. Ver datos del árbol ordenados")
     return input("Seleccione una opción: ")
 
-def iniciar_cliente():
+def iniciar_cliente(puerto):
     try:
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as cliente:
-            cliente.connect((SERVIDOR, PUERTO))
-            print("Conectado al servidor")
+            cliente.connect((SERVIDOR, puerto))
+            print(f"Conectado al servidor en el puerto {puerto}")
             
             while True:
                 opcion = mostrar_menu()
@@ -99,23 +98,17 @@ def iniciar_cliente():
                     respuesta = cliente.recv(1024).decode()
                     print(f"Respuesta del servidor: {respuesta}")
                 
-                elif opcion == '5':
-                    cliente.send("APAGAR_SERVIDOR".encode())
-                    respuesta = cliente.recv(1024).decode()
-                    print(f"Respuesta del servidor: {respuesta}")
-                    break
-                
-                elif opcion == '7':
+                elif opcion == '6':
                     cliente.send("VER_DATOS_INSERCION".encode())
                     respuesta = cliente.recv(1024).decode()
                     print(f"Respuesta del servidor: {respuesta}")
                 
-                elif opcion == '8':
+                elif opcion == '7':
                     cliente.send("VER_DATOS_ORDENADOS".encode())
                     respuesta = cliente.recv(1024).decode()
                     print(f"Respuesta del servidor: {respuesta}")
                 
-                elif opcion == '6':
+                elif opcion == '5':
                     cliente.send("EXIT".encode())
                     break
                 

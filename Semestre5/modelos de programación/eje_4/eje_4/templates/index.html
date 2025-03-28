@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Árbol Binario</title>
+</head>
+<body>
+    <h1>Visualización del Árbol Binario</h1>
+    <img src="../vistaArbol/arbol_binario.png" alt="Árbol Binario" style="max-width: 100%; height: auto;">
+    <h2>Menú</h2>
+    <form id="menuForm">
+        <select name="opcion" id="opcion">
+            <option value="1">Modo automático</option>
+            <option value="2">Modo manual</option>
+            <option value="3">Chatear con el servidor</option>
+            <option value="4">Borrar árbol binario</option>
+            <option value="6">Ver datos del árbol (orden de inserción)</option>
+            <option value="7">Ver datos del árbol ordenados</option>
+        </select>
+        <button type="submit">Enviar</button>
+    </form>
+    <script>
+        document.getElementById('menuForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const opcion = document.getElementById('opcion').value;
+            const response = await fetch('/menu', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ opcion })
+            });
+            const data = await response.json();
+            alert(data.mensaje);
+        });
+    </script>
+</body>
+</html>
