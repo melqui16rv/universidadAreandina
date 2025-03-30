@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Traductor</title>
+    <style>
+        :root {
+            --primary-color: #2196F3;
+            --secondary-color: #1976D2;
+            --bg-color: #f5f5f5;
+            --text-color: #333;
+            --message-bg: #fff;
+            --sent-message-bg: #E3F2FD;
+            --received-message-bg: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            width: 95%;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .chat-header {
+            background: var(--primary-color);
+            color: white;
+            padding: 20px;
+            border-radius: 10px 10px 0 0;
+            text-align: center;
+        }
+
+        #chatArea {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+            max-height: calc(100vh - 250px);
+            background: var(--bg-color);
+        }
+
+        .message {
+            margin-bottom: 15px;
+            max-width: 80%;
+            padding: 10px 15px;
+            border-radius: 15px;
+            position: relative;
+        }
+
+        .message.sent {
+            margin-left: auto;
+            background: var(--sent-message-bg);
+            border-bottom-right-radius: 5px;
+        }
+
+        .message.received {
+            margin-right: auto;
+            background: var(--received-message-bg);
+            border-bottom-left-radius: 5px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            color: #1a1a1a;
+            font-size: 0.95em;
+            line-height: 1.4;
+        }
+
+        .message.error {
+            background: #ffebee;
+            color: #c62828;
+        }
+
+        .chat-input {
+            display: flex;
+            padding: 20px;
+            background: white;
+            border-top: 1px solid #eee;
+            border-radius: 0 0 10px 10px;
+        }
+
+        #mensaje {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            margin-right: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        #mensaje:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        #enviar {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+
+        #enviar:hover {
+            background: var(--secondary-color);
+        }
+
+        @media (max-width: 768px) {
+            .chat-container {
+                margin: 10px;
+                width: auto;
+                height: calc(100vh - 20px);
+            }
+            
+            .message {
+                max-width: 90%;
+            }
+            
+            #chatArea {
+                max-height: calc(100vh - 200px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <h1>Chat Traductor</h1>
+        </div>
+        <div id="chatArea"></div>
+        <div class="chat-input">
+            <input type="text" id="mensaje" placeholder="Escribe tu mensaje..." 
+                   onkeypress="if(event.key === 'Enter') document.getElementById('enviar').click()">
+            <button id="enviar">Enviar</button>
+        </div>
+    </div>
+    <script>
+        document.getElementById('enviar').addEventListener('click', async () => {
+            const mensaje = document.getElementById('mensaje').value.trim();
+            if (!mensaje) return;
+
+            const chatArea = document.getElementById('chatArea');
+            
+            // Agregar mensaje del usuario
+            const mensajeUsuario = document.createElement('div');
+            mensajeUsuario.className = 'message sent';
+            mensajeUsuario.textContent = mensaje;
+            chatArea.appendChild(mensajeUsuario);
+
+            // Limpiar input y hacer scroll
+            document.getElementById('mensaje').value = "";
+            chatArea.scrollTop = chatArea.scrollHeight;
+
+            try {
+                const response = await fetch('/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ mensaje })
+                });
+
+                const data = await response.json();
+                
+                // Agregar respuesta del servidor 
+                const mensajeServidor = document.createElement('div');
+                mensajeServidor.className = 'message received';
+                mensajeServidor.textContent = data.mensaje;
+                chatArea.appendChild(mensajeServidor);
+                
+                // Scroll al último mensaje
+                chatArea.scrollTop = chatArea.scrollHeight;
+            } catch (error) {
+                console.error('Error:', error);
+                const errorMessage = document.createElement('div');
+                errorMessage.className = 'message received error';
+                errorMessage.textContent = 'Respuesta del Servidor: Error en la comunicación';
+                chatArea.appendChild(errorMessage);
+            }
+        });
+
+        // Focus en el input al cargar
+        window.onload = () => document.getElementById('mensaje').focus();
+    </script>
+</body>
+</html>
