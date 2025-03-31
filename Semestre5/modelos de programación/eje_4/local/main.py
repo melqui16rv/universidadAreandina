@@ -1,4 +1,3 @@
-# main.py
 from app import server
 
 if __name__ == '__main__':

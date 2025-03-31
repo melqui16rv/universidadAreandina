@@ -21,5 +21,3 @@ def traducir_texto(texto, target_language="en"):
             return f"Error en la traducción. Código: {response.status_code}"
     except Exception as e:
         return f"Error de conexión: {str(e)}"
-
-

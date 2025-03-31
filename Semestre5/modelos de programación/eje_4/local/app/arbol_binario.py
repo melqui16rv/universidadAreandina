@@ -3,7 +3,6 @@ import networkx as nx
 import matplotlib.pyplot as plt
 import os
 
-
 class Nodo:
     def __init__(self, valor):
         self.valor = valor
@@ -16,22 +15,18 @@ class ArbolBinario:
         self.raiz = None
         self.cantidad = 0
         self.orden_insercion = []
-        # Eliminar la verificación de Graphviz
         self.graphviz_disponible = False
 
     def insertar(self, valor):
-        # Validar si el valor ya existe en el árbol
         if valor in self.obtener_elementos():
             print(f"El valor {valor} ya existe en el árbol. Por favor, inserte otro número.")
             return
 
         self.orden_insercion.append(valor)  # Guardar el orden de inserción
-        # Crear un nuevo nodo con el valor dado
         nuevo_nodo = Nodo(valor)
         self.cantidad += 1
         
         if not self.raiz:
-            # Si el árbol está vacío, el nuevo nodo se convierte en la raíz
             self.raiz = nuevo_nodo
             # Actualizar la visualización del árbol
             self.visualizar_arbol()
@@ -58,7 +53,6 @@ class ArbolBinario:
         self.visualizar_arbol()
 
     def obtener_elementos(self):
-        # Obtener los elementos del árbol en orden ascendente
         elementos = []
         def inorden(nodo):
             if nodo:
@@ -80,16 +74,12 @@ class ArbolBinario:
             return "Árbol vacío"
 
         try:
-            # Crear el directorio si no existe
             os.makedirs(os.path.dirname(ruta_guardado), exist_ok=True)
 
-            # Crear grafo
             G = nx.DiGraph()
             pos = {}
             ancho_total = self._calcular_ancho_subarbol(self.raiz)
             self._agregar_nodos_networkx(self.raiz, 0, 0, pos, G, ancho_total)
-
-            # Crear nueva figura y guardarla
             fig = plt.figure(figsize=(12, 8))
             nx.draw(G, pos,
                    with_labels=True,
@@ -100,8 +90,6 @@ class ArbolBinario:
                    arrows=True,
                    edge_color='gray',
                    arrowsize=20)
-
-            # Guardar y limpiar
             plt.savefig(f"{ruta_guardado}.png", bbox_inches='tight')
             plt.close(fig)
             
@@ -112,34 +100,26 @@ class ArbolBinario:
             print(f"Error al generar visualización: {e}")
             return self._visualizar_texto()
         finally:
-            # Asegurarnos de que todas las figuras se cierren
             plt.close('all')
 
     def _agregar_nodos_networkx(self, nodo, x, y, pos, G, ancho_subarbol=1):
-        """Agrega nodos al grafo NetworkX con posiciones calculadas dinámicamente"""
         if nodo:
-            # Agregar el nodo al grafo
             G.add_node(nodo.valor)
-            pos[nodo.valor] = (x, -y)  # Usamos -y para que crezca hacia abajo
-
-            # Calcular el ancho del subárbol izquierdo y derecho
+            pos[nodo.valor] = (x, -y)
             ancho_izquierdo = self._calcular_ancho_subarbol(nodo.izquierda)
             ancho_derecho = self._calcular_ancho_subarbol(nodo.derecha)
-
-            # Procesar hijo izquierdo
             if nodo.izquierda:
-                nuevo_x = x - (ancho_izquierdo + 0.5)  # Ajustar posición horizontal
+                nuevo_x = x - (ancho_izquierdo + 0.5)
                 G.add_edge(nodo.valor, nodo.izquierda.valor)
                 self._agregar_nodos_networkx(nodo.izquierda, nuevo_x, y + 1, pos, G, ancho_izquierdo)
 
-            # Procesar hijo derecho
             if nodo.derecha:
-                nuevo_x = x + (ancho_derecho + 0.5)  # Ajustar posición horizontal
+                nuevo_x = x + (ancho_derecho + 0.5)
                 G.add_edge(nodo.valor, nodo.derecha.valor)
                 self._agregar_nodos_networkx(nodo.derecha, nuevo_x, y + 1, pos, G, ancho_derecho)
 
     def _calcular_ancho_subarbol(self, nodo):
-        """Calcula el ancho del subárbol para ajustar el espaciado dinámico"""
+
         if not nodo:
             return 0
         return 1 + self._calcular_ancho_subarbol(nodo.izquierda) + self._calcular_ancho_subarbol(nodo.derecha)
@@ -147,5 +127,5 @@ class ArbolBinario:
     def borrar_arbol(self):
         self.raiz = None
         self.cantidad = 0
-        self.orden_insercion = []  # Limpiar también el orden de inserción
+        self.orden_insercion = [] 
         return "Árbol binario borrado completamente"
