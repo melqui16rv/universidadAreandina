@@ -1,0 +1,117 @@
+9
+ 
+Elección múltiple
+0,333 puntos
+ 
+ 
+Pregunta en la posición 9 
+
+¿Cuál de las siguientes medidas de tendencia central es menos sensible a valores extremos en un conjunto de datos biomédicos?
+
+moda
+
+Mediana
+
+Media aritmética
+
+Frecuencia absoluta
+Pregunta en la posición 10
+10
+ 
+Elección múltiple
+0,333 puntos
+ 
+ 
+Pregunta en la posición 10 
+
+¿Qué medida de dispersión expresa cuanto se alejan los datos, en promedio respecto a la media y en la misma unidad de la variable ?
+
+Desviación estándar
+
+Frecuencia relativa
+
+Moda
+
+Escala ordinal
+Pregunta en la posición 11
+11
+ 
+Elección múltiple
+0,333 puntos
+ 
+ 
+Pregunta en la posición 11 
+
+Se tiene el siguiente conjunto de datos
+
+5,4,8,3,2,9 la mediana es
+
+9
+
+4,5
+
+2
+
+3,5
+Pregunta en la posición 12
+12
+ 
+Verdadero o falso
+0,333 puntos
+ 
+ 
+Pregunta en la posición 12 
+
+2 rectas son paralelas  si m1 es multiplo de m2
+Verdadero
+Falso
+Pregunta en la posición 13
+13
+ 
+Elección múltiple
+0,333 puntos
+ 
+ 
+Pregunta en la posición 13 
+
+se tiene la siguiente operación
+
+el resultados es
+
+4,15
+
+3,2
+
+2,16
+
+5,2
+Pregunta en la posición 14
+14
+ 
+Elección múltiple
+0,333 puntos
+ 
+ 
+Pregunta en la posición 14 
+
+Un número excede en seis a otro y el doble del mayor equivale al triple del menor. Encuentra los números.
+
+7 y 12
+
+16 y 9
+
+20 y 15
+
+18 y 12
+Pregunta en la posición 15
+15
+ 
+Verdadero o falso
+0,333 puntos
+ 
+ 
+Pregunta en la posición 15 
+
+el perímetro de una figura es la multiplicación de todos sus lados
+Verdadero
+Falso

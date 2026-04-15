@@ -1,0 +1,112 @@
+REGISTROS PARA AGREGAR AL EXCEL - ACTIVIDAD DIDÁCTICA EJE 4
+============================================================
+
+A continuación se presentan los registros en formato CSV para copiar directamente al Excel:
+
+---
+
+## REGISTRO 1: PHISHING - AMAZON PRIME DAY
+
+No;17
+Ataque;Cuidado en el próximo Amazon Prime Day: aumentan las webs falsas para estafarte
+País;Estados Unidos (Nivel general)
+Tipo de Ataque;Phishing
+Concepto del Ataque;Envío masivo de correos simulando problemas con compras en Amazon para redireccionar a sitios fraudulentos y capturar credenciales. Los atacantes crean sitios clonados del portal oficial para engañar usuarios. Campaña dirigida a explotación de confianza en marca corporativa y captura de datos personales y financieros.
+Fecha;8 de julio de 2024
+Análisis;La campaña explota el evento de compras Amazon Prime Day para enviar millones de correos fraudulentos indicando problemas de pago. Los sitios clonados tienen apariencia similar al sitio oficial pero contienen dominios alterados. Los atacantes capturan credenciales de usuario, datos de tarjeta de crédito y otra información personal mediante formularios falsificados en estos sitios espejo. El vector principal es el correo electrónico con URLs maliciosas.
+Ley y/o Artículo;Ley 1273 de 2009 (Colombia) - Artículo 269G: Suplantación de Sitios Web para adquirir y capturar datos personales
+Penas;Prisión de 48 a 96 meses. Multa de 100 a 1,000 salarios mínimos legales vigentes.
+Prevención;1) Verificar cuidadosamente el remitente y dominio de correo. 2) Revisar presencia de errores ortográficos. 3) Validar que URL comienza con https:// y contiene icono de candado. 4) Implementar protocolos DMARC, SPF y DKIM. 5) Capacitación continua en conciencia de seguridad. 6) Filtros de correo electrónico avanzados con análisis de reputación de dominio.
+Enlace;https://cincodias.elpais.com/smartlife/lifestyle/2024-07-08/cuidado-en-el-proximo-amazon-prime-day-aumentan-las-webs-falsas-para-estafarte.html
+Aporte de la Informática Forense en este caso;La informática forense permite rastrear fuentes de correos maliciosos mediante análisis de encabezados SMTP (SPF, DKIM, DMARC). Analiza metadatos en URLs y sitios fraudulentos incluyendo registros DNS falsificados. Identifica patrones de envío, infraestructura utilizada y equipos comprometidos. Reconstruye cadena de envío y establece línea temporal de campaña. Permite atribución técnica de atacantes mediante análisis de servidores de correo y registradores de dominio.
+Evidencia por Recolectar;1) Encabezados y contenido completo de correos electrónicos maliciosos incluyendo campos DKIM y SPF. 2) URLs y metadatos de sitios web fraudulentos (WHOIS, DNS, certificados SSL). 3) Registros de actividad en servidores de correo y dispositivos finales. 4) Archivos de registro de autenticación y accesos fallidos. 5) Direcciones IP de origen de servidores de correo. 6) Cuentas bancarias o correos electrónicos asociados a atacantes. 7) Logs de filtrado de correo si disponibles.
+Nombre del Analista;Melqui Romero
+
+---
+
+## REGISTRO 2: APT - AVIANCA ATTACK
+
+No;18
+Ataque;Avianca Attack (APT Blind Eagle)
+País;Colombia
+Tipo de Ataque;Spear Phishing / Advanced Persistent Threat (APT)
+Concepto del Ataque;Campaña APT dirigida contra la aerolínea Avianca mediante correos de phishing especializado con adjuntos maliciosos (archivos .URL). Explotación de vulnerabilidades del día cero para robo de credenciales e instalación de malware remoto (AsyncRAT y Quasar RAT). Permite acceso remoto persistente, movimiento lateral en la red interna, exfiltración de datos sensibles e interrupción de servicios críticos incluyendo sistema LifeMiles.
+Fecha;Febrero - Marzo de 2025
+Análisis;Ataque altamente sofisticado realizado por grupo APT especializado. Fase 1: Spear phishing dirigido a empleados específicos con conocimiento previo de su rol. Fase 2: Descarga de archivo .URL malicioso que ejecuta payload. Fase 3: Instalación de RATs (AsyncRAT, Quasar RAT) para acceso remoto persistente. Fase 4: Reconocimiento de red interna y escalada de privilegios. Fase 5: Movimiento lateral hacia sistemas críticos. Fase 6: Exfiltración de datos de pasajeros, empleados y operaciones. Fase 7: Interrupción de servicios como LifeMiles. Indica capacidad operativa contra infraestructura crítica nacional.
+Ley y/o Artículo;Ley 1273 de 2009 (Colombia) - Delitos Informáticos: Art. 269A (Acceso no autorizado), Art. 269B (Obstrucción ilegal), Art. 269C (Interceptación de datos), Art. 269F (Suplantación de sitios web)
+Penas;Prisión de 48 a 120 meses dependiendo de los delitos específicos. Multa de 100 a 1,000 salarios mínimos legales vigentes.
+Prevención;1) Capacitación intensiva en conciencia de phishing dirigido. 2) Verificación rigurosa de remitentes de correo antes de descargar. 3) Autenticación multifactor (MFA) obligatoria en todos los accesos. 4) Actualizaciones y parches de sistema inmediatos. 5) Monitoreo continuo de red y sistemas de detección de anomalías (IDS/IPS). 6) Soluciones de detección y respuesta en endpoint (EDR). 7) Políticas de seguridad robustas incluyendo principio de menor privilegio.
+Enlace;https://www.centuriointernacional.com/blog-articles/estudio-de-caso-de-campana-de-phishing-de-la-aerolinea-avianca-2024-2025
+Aporte de la Informática Forense en este caso;La informática forense reconstruye la cadena completa de ataque. Analiza encabezados y contenido de correos maliciosos para identificar origen. Realiza ingeniería inversa del malware AsyncRAT y Quasar RAT determinando funcionalidades y capacidades. Analiza logs de red para rastrear movimiento lateral dentro de infraestructura. Examina logs de autenticación para identificar credenciales comprometidas usadas. Reconstruye línea temporal de exfiltración de datos. Confirma alcance del compromiso de sistemas. Proporciona evidencia técnica para atribución al grupo APT y procesos legales.
+Evidencia por Recolectar;1) Encabezados y contenido completo de correos de phishing con adjuntos .URL. 2) Archivos .URL maliciosos con análisis estático y dinámico. 3) Logs de red incluyendo tráfico WebDAV y conexiones C2 (Command & Control). 4) Artefactos de ejecución de malware en endpoints comprometidos. 5) Credenciales comprometidas y sus rutas de utilización. 6) Logs de acceso a sistemas internos y cambios de privilegios. 7) Registros de actividad del sistema LifeMiles. 8) Copias forenses de dispositivos infectados con preservación de evidencia volátil (RAM).
+Nombre del Analista;Melqui Romero
+
+---
+
+## REGISTRO 3: DATA BREACH - HACIENDA ESPAÑA
+
+No;19
+Ataque;Hacienda Attack - Ministerio de Hacienda España
+País;España / Madrid
+Tipo de Ataque;Data Breach / Unauthorized Access (IDOR - Insecure Direct Object Reference)
+Concepto del Ataque;Acceso no autorizado a bases de datos críticas del Ministerio de Hacienda comprometiendo datos personales, bancarios y fiscales de aproximadamente 47.3 millones de ciudadanos españoles. El atacante (grupo "HaciendaSec") explotó vulnerabilidad IDOR en sistemas legacy de Hacienda permitiendo enumeración y extracción masiva de registros. Incluyó números de DNI, nombres, direcciones, teléfonos, emails, IBANs e información fiscal de población completa.
+Fecha;2 de febrero de 2026
+Análisis;Brechas de seguridad critical indica múltiples fallos simultáneos: 1) Reutilización de credenciales de brechas previas sin validación. 2) Ausencia de Autenticación Multifactor (MFA). 3) Vulnerabilidad IDOR en sistemas heredados sin propiamente validación de control de acceso. 4) Sistemas de monitoreo fallidos o insuficientes para detectar consultas masivas. 5) Falta de encriptación de datos en reposo. El atacante realizó enumeración secuencial de IDs extrayendo bases de datos completas. La detección ocurrió por firma de tercero (Hackmanac) en dark web, no por sistemas interno. Representa fallo catastrófico de seguridad en infraestructura crítica de estado.
+Ley y/o Artículo;Ley 1273 de 2009 (Colombia) - Art. 269A (Acceso no autorizado): 48-96 meses. Art. 269C (Interceptación de datos): 36-72 meses. Art. 269G (Suplantación): 48-96 meses. Art. 269J (Transferencia no autorizada de activos): 48-120 meses. GDPR (UE) - Violación de derechos de datos con multas hasta 20 millones EUR o 4% de revenue global. Notificación obligatoria en 72 horas.
+Penas;Prisión: 48 a 120 meses según delito específico. Multa: 100 a 1,500 salarios mínimos legales vigentes (o equivalentes en EUR). Sanciones GDPR adicionales: hasta 20 millones EUR. Responsabilidad civil de Ministerio hacia 47.3 millones de ciudadanos por daños.
+Prevención;Capa 1 - Autenticación: Implementar MFA obligatorio. Verificación automática de credenciales contra HaveIBeenPwned. Capa 2 - Control de Acceso: Reparación de vulnerabilidad IDOR implementando validación de permisos por usuario. Capa 3 - Monitoreo: Detección automática de patrones anómalos (múltiples consultas a un mismo usuario). Alertas de consultas masivas secuenciales. Capa 4 - Encriptación: Encriptación de datos en reposo (AES-256). Encriptación en tránsito (TLS 1.3). Capa 5 - Respuesta: Protocolo de incidente predefinido. Notificación a ciudadanos en 72 horas. Cooperación con autoridades.
+Enlace;https://elpais.com/economia/2026-02-02/hacienda-investiga-un-posible-hackeo-que-compromete-datos-personales-bancarios-y-fiscales-de-ciudadanos.html
+Aporte de la Informática Forense en este caso;La informática forense es crítica para determinar alcance real del compromiso. Analiza logs de acceso a bases de datos identificando punto de entrada inicial. Reconstruye actividad del atacante mediante logs de aplicación determinando volumen exacto de registros exfiltrados. Realiza análisis OSINT de posts en foros dark web comparando datos filtrados con información en Hacienda. Analiza tráfico de red para identificar direcciones IP de origen y conexiones externas. Examina cambios en sistema de archivos y registros de auditoría. Determina si acceso fue mediante credenciales o exploración directa de API. Proporciona cronología detallada de eventos para investigación penal y civil.
+Evidencia por Recolectar;1) Logs completos de acceso a base de datos con timestamps. 2) Registros de intentos de autenticación fallidos y exitosos. 3) Copias forenses de bases de datos para análisis comparativo. 4) Capturas de tráfico de red mostrando exfiltración de datos. 5) Posts en foros y redes sociales donde grupo "HaciendaSec" reclama responsabilidad. 6) Direcciones IP de origen de ataques. 7) Logs de firewall y sistemas de prevención de intrusiones. 8) Aplicaciones y cambios de permisos. 9) Emails de comunicación de atacante si disponibles. 10) Blockhain o análisis de criptomonedas para pagos solicitados. Todo con rigurosa cadena de custodia.
+Nombre del Analista;Melqui Romero
+
+---
+
+## REGISTRO 4: RANSOMWARE - WANNACRY
+
+No;20
+Ataque;WannaCry Ransomware Attack
+País;Reino Unido (Impacto global - 150+ países)
+Tipo de Ataque;Ransomware / Worm autorreplicante
+Concepto del Ataque;Gusano ransomware que explota vulnerabilidad EternalBlue (exploit robado del NSA por grupo Shadow Brokers) para propagarse automáticamente a través de redes locales e internet. Encripta archivos críticos exigiendo rescate en Bitcoin. Afectó más de 200,000 computadoras incluyendo infraestructura crítica (hospitales NHS, fabricantes de autos). Caracterizado por "kill switch" involuntario que permitió contención parcial.
+Fecha;12 de mayo de 2017
+Análisis;WannaCry es gusano de red que combina exploits de vulnerabilidad con ransomware. Explotación: EternalBlue afecta SMB (Server Message Block) en Windows sin parches. Propagación: se auto-replica atravesando redes sin intervención humana. Cifrado: utiliza RSA-2048 + AES para encriptación de archivos. Monetización: solicita pago en Bitcoin. Kill switch: malware incluye consulta a dominio iuqerfsodp9ifjaposdfjhgosurijfaewrwergwea.com - si resuelve exitosamente, detiene ejecución. Marcus Hutchins registró dominio por $10.69 deteniendo propagación global. Posterior análisis reveló que variante esparcida era incompleta con kill switch no intencional.
+Ley y/o Artículo;Budapest Convention on Cybercrime (2001) - Art. 4 y 5 sobre daño a integridad de datos. Criminal Code - Art. 269 (Software malicioso). Ley 1273 de 2009 (Colombia) para delitos similares.
+Penas;Varían por país. Típicamente: 5-10 años de prisión federal. Multas significativas. En Colombia bajo Ley 1273: prisión 48-96 meses + multa 100-1,000 SMLv.
+Prevención;1) Actualización inmediata y automática de sistemas operativos. 2) Instalación de parches de seguridad sin demora. 3) Backups regulares en medios desconectados (offline). 4) Segmentación de red para limitar propagación. 5) Endpoint Detection and Response (EDR) para detección temprana. 6) Educación de usuarios sobre amenazas. 7) Testing de planes de recuperación regularmente. 8) Monitoreo de intentos de explotación de EternalBlue.
+Enlace;https://www.cloudflare.com/es-es/learning/security/ransomware/wannacry-ransomware/
+Aporte de la Informática Forense en este caso;Ingeniería inversa de muestras de WannaCry reveló funcionalidad interna y mecanismo de kill switch. Análisis de comportamiento mostró patrones de propagación y cifrado. Rastreo de direcciones Bitcoin donde víctimas pagaron rescate permitió seguimiento de movimiento de fondos. Análisis de logs de sistema en máquinas infectadas reconstruyó línea temporal de infección. Comparación de hashes de malware entre muestras confirmó variantes. Análisis de tráfico de red identificó patrones de propagación SMB. La capacidad de Marcus Hutchins de realizar reverse engineering fue crucial para identificar kill switch.
+Evidencia por Recolectar;1) Muestras de malware WannaCry (variantes primarias y posteriores). 2) Logs de sistema de máquinas infectadas mostrando momento preciso de infección. 3) Tráfico de red capturado durante propagación (pcap files). 4) Archivos cifrados para análisis de rutina de encriptación. 5) Notas de rescate (instructions.txt, payment addresses). 6) Transacciones en blockchain Bitcoin a direcciones de rescate. 7) Memoria RAM de máquinas infectadas (análisis volátil). 8) Registros de intentos de conexión SMB. 9) Archivos de configuración y scripts del malware.
+Nombre del Analista;Melqui Romero
+
+---
+
+## REGISTRO 5: RANSOMWARE - IFX NETWORKS
+
+No;21
+Ataque;IFX Networks Ransomware Attack
+País;Colombia (Impacto: América Latina)
+Tipo de Ataque;Ransomware / Secuestro Digital de Información y Servicios Cloud
+Concepto del Ataque;Ataque ransomware contra proveedor de servicios cloud IFX Networks que paralizó infraestructura afectando más de 4,200 empresas en América Latina (1,800 en Colombia). El ataque cifró sistemas críticos de centros de datos. Sectores afectados: Salud, Justicia, Educación, Gobierno. Resultó en paralización de servicios esenciales públicos y privados. Exposición de datos sensibles de ciudadanos dependientes de estas infraestructuras.
+Fecha;12-16 de septiembre de 2023
+Análisis;Ataque de impacto regional sin precedentes. Fase 1: Acceso inicial a infraestructura IFX Networks (método no completamente confirmado, probablemente credenciales comprometidas o explotación de vulnerabilidad). Fase 2: Instalación de malware ransomware propagándose horizontalmente. Fase 3: Cifrado de todas las máquinas virtuales, bases de datos y almacenamiento. Fase 4: Solicitud de rescate masiva. Fase 5: Notificación a clientes de parálisis. Impacto cascada afectó servicios de salud (hospitalización de emergencia), justicia (juzgados sin acceso a expedientes), educación (escuelas cerradas). Indicador crítico de riesgo en infraestructura cloud negligentemente protegida.
+Ley y/o Artículo;Ley 1273 de 2009 (Colombia) - Art. 269G: Obstrucción no autorizada de sistemas informáticos y redes de computadoras.
+Penas;Prisión: 4 a 8 años de confinamiento. Multa: 50 a 1,000 salarios mínimos mensuales vigentes.
+Prevención;1) Implementación de backups regulares con redundancia geográfica. 2) Segmentación rigurosa de red en arquitectura cloud. 3) Autenticación multifactor (MFA) en todos los accesos administrativos. 4) Capacitación intensiva en conciencia de seguridad para personal. 5) Arquiteyctura Zero Trust implementada completamente. 6) Monitoreo continuo 24/7 con alertas en tiempo real. 7) Testing de planes de recuperación ante desastres. 8) Isolación de máquinas infectadas automatizada. 9) Encriptación de datos en reposo y en tránsito.
+Enlace;https://canal1.com.co/noticias/nacional/exclusiva-este-fuemensaje-dejo-grupo-hackers-ifx-atacado-jaque-varias-entidades-colombia/
+Aporte de la Informática Forense en este caso;Identificación de variante específica de ransomware utilizada mediante análisis de muestras. Reconstrucción de línea temporal completa del ataque basada en logs de sistema y aplicación. Análisis de tráfico de red para identificar punto de entrada inicial y comunicaciones con servidores de comando y control (C2). Determinación del alcance exacto de cifrado (cuántos archivos, bases de datos, máquinas virtuales). Análisis de notas de rescate para atribución a grupo específico. Recuperación parcial de datos donde backups intactos existían. Análisis forense de servidores de IFX Networks para lecciones aprendidas. Evidencia para investigación penal y proceso contra atacantes.
+Evidencia por Recolectar;1) Logs de sistema y servidores de toda infraestructura comprometida. 2) Capturas de tráfico de red mostrando comunicaciones C2. 3) Entradas de registro de Windows incluyendo persistence mechanisms. 4) Archivos cifrados y notas de rescate. 5) Muestras de malware ransomware para análisis. 6) Comunicaciones del grupo criminal (emails, mensajes directos). 7) Direcciones IP de servidores C2. 8) Información de pagos en criptomonedas solicitados. 9) Configuración de redes virtuales y controles de seguridad en el momento del ataque. 10) Logs de cambios administrativos previos al ataque.
+Nombre del Analista;Melqui Romero
+
+---
+
+INSTRUCCIONES PARA COPIAR AL EXCEL
+==================================
+
+1. Abre el archivo: actividad_didactica_eje4.csv en Excel
+2. Copia cada registro (entre líneas de "---") fila por fila
+3. Asegúrate de mantener la estructura: No;Ataque;País;Tipo de Ataque;Concepto;Fecha;Análisis;Ley;Penas;Prevención;Enlace;Aporte Forense;Evidencia;Analista
+4. Pega en nuevas filas 17-21 en el Excel
+5. Guarda el archivo
+
+NOTA: Si prefieres formato completamente listo para copiar/pegar en una sola línea por registro, solicita la versión CSV de una línea.

@@ -1,0 +1,5 @@
+quiero que investiques como se realizo la actividad del eje 1 y repliques para realizar la actividad del eje 3 para este caso tengo un ejemplo de un compañero que realizo el trabajo ya que como somos un grupo pero toca presentar el trabajo por ceparado entonces apezar de la investigación en conjunto la precentación es individual.
+
+el archivo ejemplo es "Análisis forense del Registro de Windows con FTK Imager" "informatica forence\eje_3\Análisis forense del Registro de Windows con FTK Imager.pdf" 
+
+indaga como hiciste la actividad del eje 1 para hacer la del eje 3, tu tenias un archivo para ir guiando como hacer el trabajo con sus capturas, ademas generabas un archivo docx, md, py todo esto para realizar el trabajo completo.... procede

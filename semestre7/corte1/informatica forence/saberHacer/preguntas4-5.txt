@@ -1,0 +1,53 @@
+4
+ 
+Elección múltiple
+0,333 puntos
+ 
+ 
+Pregunta en la posición 4 
+
+¿Qué expresa la frecuencia relativa en un conjunto de datos sanitarios?
+
+La diferencia entre dos medidas biomédicas consecutivas
+
+La proporción o porcentaje que representa una categoría respecto al total
+
+El total acumulado de todas las variables de estudio
+
+El valor mas repetido en un registro clínico
+Pregunta en la posición 5
+5
+ 
+Elección múltiple
+0,333 puntos
+ 
+ 
+Pregunta en la posición 5 
+
+¿Cuál es una característica fundamental de una tabla estadística bien elaborada para el análisis sanitario?
+
+Organizar los datos con claridad mediante títulos, categorías y valores bien definidos
+
+Usar únicamente colores llamativos para destacar resultados
+
+Presentar información sin encabezados para ahorrar espacio
+
+Incluir datos desordenados para mostrar toda la información original
+
+
+6
+ 
+Coincidencia
+0,333 puntos
+ 
+ 
+Pregunta en la posición 6 
+
+relacione los conceptos
+Solicitar 1Gráficos de sectores
+Respuesta de la pregunta 1 Gráficos de sectores
+Solicitar 2Grafico lineal
+Respuesta de la pregunta 2 Grafico lineal
+Solicitar 3Histograma
+Respuesta de la pregunta 3 Histograma
+Solicitar 4Grafico de barras

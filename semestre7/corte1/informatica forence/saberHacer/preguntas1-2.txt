@@ -1,0 +1,51 @@
+1
+ 
+Elección múltiple
+0,333 puntos
+ 
+ 
+Pregunta en la posición 1 
+
+cual de las siguientes opciones describe correctamente una variable cuantitativa en salud
+
+Nivel de hemoglobina medido en un examen clínico
+
+Clasificación del estado de vacunación
+
+Tipo de seguro del paciente
+
+Grupo sanguíneo registrado en laboratorio
+Pregunta en la posición 2
+2
+ 
+Elección múltiple
+0,333 puntos
+ 
+ 
+Pregunta en la posición 2 
+
+¿cual de las siguientes variables corresponde a una escala ordinal en el ámbito sanitario?
+
+Temperatura corporal en grados Celsius
+
+Tipo de afiliación al sistema de salud
+
+Nivel de glucosa en sangre
+
+Clasificación de dolor en leve, moderado o severo
+
+3
+ 
+Coincidencia
+0,333 puntos
+ 
+ 
+Pregunta en la posición 3 
+
+relacione los conceptos
+Solicitar 1frecuencia absoluta
+Respuesta de la pregunta 1 frecuencia absoluta
+Solicitar 2frecuencia relativa
+Respuesta de la pregunta 2 frecuencia relativa
+Solicitar 3frecuencia acumulada
+Respuesta de la pregunta 3 frecuencia acumulada

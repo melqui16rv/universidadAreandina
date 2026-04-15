@@ -1,0 +1,34 @@
+7
+ 
+Elección múltiple
+0,333 puntos
+ 
+ 
+Pregunta en la posición 7 
+
+Qué tipo de grafico resulta mas apropiado para mostrar la evolución de un indicador de salud a lo largo del tiempo?
+
+Escala nominal
+
+Grafico de sectores
+
+Grafico lineal
+
+Tabla de doble entrada
+
+8
+ 
+Coincidencia
+0,333 puntos
+ 
+ 
+Pregunta en la posición 8 
+
+relacione los conceptos
+Solicitar 1Mediana
+Respuesta de la pregunta 1 Mediana
+Solicitar 2las principales medidas de tendencia central
+Respuesta de la pregunta 2 las principales medidas de tendencia central
+Solicitar 3moda
+Respuesta de la pregunta 3 moda
+Solicitar 4Media aritmética
