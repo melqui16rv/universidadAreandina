@@ -1,0 +1,80 @@
+Criterios	Calificaciones	Calificaciones	Calificaciones	Calificaciones	Calificaciones	Calificaciones	Pts
+Coherence	"2.85 pts Superior
+Speaks coherently with fully appropriate cohesive features.
+Develops topics fully and appropriately."	"2.41 pts Good
+Speaks coherently with the most appropriate cohesive features.
+Develops topics appropriately most of the time."	"1.74 pts Intermediate
+Speaks somehow coherently with some cohesive features.
+Develops some of the topics."	"1.03 pts Basic
+It is hardly comprehensible. Speaks with effort and some lack of cohesive features. Does not develop most topics appropriately."	"0.67 pts Needs improvement
+It is not comprehensible. Struggles to speak and lacks cohesive features. Does not develop the topics appropriately."	"0 pts
+Not presented
+No attempt. The link or file doesn’t work."	2.85 pts
+Pronunciation	"2.9 pts Superior
+Uses a full range of pronunciation features with precision. It is effortless to understand.
+Almost error-free."	"2.46 pts Good
+Comprehensible, generally correct. Uses a good range of pronunciation with only occasional error."	"1.77 pts Intermediate
+Shows some effective use of pronunciation features and control. Can generally be understood, though mispronunciation of individual words or sounds reduces clarity at times. Frequent errors that confuse listener and require guessing at meaning."	"1.05 pts Basic
+Uses a limited range of pronunciation features. Lapses and errors are frequent and cause difficulty requiring guessing at meaning for the listener. Sound quality affects comprehension."	"0.68 pts Needs improvement
+Speech is often unintelligible. Most utterances contain errors and are incomprehensible. Little communication. Sound quality affects comprehension."	"0 pts
+Not presented No attempt. The link or file doesn’t
+work."	2.9 pts
+Grammatical range and accuracy	"2.85 pts Superior
+Uses structures naturally and appropriately. Produces consistently accurate structure.
+Speaker self-corrects without hesitation."	"2.41 pts Good
+Uses structures flexibly. Produces a majority of error-free ideas with only very occasional basic/non-
+systematic errors. These minor errors do not impede communication."	"1.74 pts Intermediate
+Uses simple structures with reasonable accuracy.
+Frequently produces error-free ideas, though some grammatical mistakes persist. Self-corrects on some."	"1.03 pts Basic
+Errors are frequent and may lead to misunderstanding. Many errors are found in utterances. Errors impede effective communication."	"0.67 pts Needs improvement
+Makes numerous errors and there is evident limited success on utterances. Most structures are produced incorrectly. Errors impede communication."	"0 pts
+Not presented No attempt. The link or file doesn’t
+work."	2.85 pts
+Fluency	"2.85 pts Superior
+Speaks fluently with rare repetition or self-correction. There are no hesitations: quick, continuous flow. Natural pauses. Excels in producing speech naturally, with no reliance on notes or a script, delivering their message fluently and confidently."	"2.41 pts Good
+Speaks at length without noticeable effort or loss of fluency. Speaks with only occasional hesitation. Can speak with rarely search for language.
+Produces speech naturally and rarely relies on notes, maintaining a smooth and coherent delivery throughout the task."	"1.74 pts Intermediate
+Halting, hesitating. Usually maintains flow of speech but uses repetition, self-correction and/or slow speech to keep going. Can rephrase and respond.
+Occasionally glances at notes but primarily produces speech naturally, though there may be moments of hesitation or dependence on written material."	"1.03 pts Basic
+Frequent hesitations, noticeable pauses and may speak slowly, with frequent repetition and self-correction.
+Translates questions before response. Often reads from notes or a script, with limited natural production, resulting in a somewhat stilted delivery."	"0.67 pts Needs improvement
+Constant searching for vocabulary, verb tense. Does not complete utterances, unable to convey basic message. Has limited ability to link simple sentences. Relies heavily on reading from notes or a script, making their speech sound unnatural and disjointed."	"0 pts
+Not presented
+No attempt. The link or file doesn’t work."	2.85 pts
+Vocabulary and lexical resource	"2.85 pts Superior
+Uses a wide range of"	"2.4 pts Good
+Uses vocabulary resource flexibly"	"1.75 pts Intermediate
+Has enough vocabulary to"	"1.02 pts Basic
+Uses vocabulary with limited"	0.69 pts Needs improvement	"0 pts
+Not presented
+No attempt. The link or file doesn’t"	2.85 pts
+N/A	"vocabulary with full flexibility and precision. Uses idiomatic language naturally and accurately.
+Interesting response."	to discuss and present the topic. Uses some idiomatic vocabulary and shows awareness of style. Good response.	discuss and present the topic at length although there is some limited flexibility and precision.	"flexibility and precision.
+Insufficient range of vocabulary for communication."	"Uses insufficient vocabulary to fulfil the topic.
+Produces isolated words which do not communicate the idea of the topic."	work.	N/A
+Learning outcome	"2.85 pts Superior
+Demonstrates a complete mastery of the learning outcome and applies it consistently throughout the task."	"2.41 pts Good
+Demonstrates a good understanding of the learning outcome and applies it effectively in most aspects of the task. He/she appears on camera."	"1.74 pts Intermediate
+Demonstrates an adequate understanding of the learning outcome and applies it effectively in some aspects of the task. He/she appears on camera."	"1.03 pts Basic
+Demonstrates a basic understanding of the learning outcome but has difficulties applying it consistently in the task. He/she appears on camera."	"0.67 pts Needs improvement
+Does not demonstrate a clear understanding of the learning outcome and does not apply it in the task. Does not appear on camera."	"0 pts
+Not presented No attempt. The link or file doesn’t
+work."	2.85 pts
+Creativity	"2.85 pts Superior
+Displays exceptional creativity. Ideas are highly original, engaging, and well-developed."	"2.4 pts Good
+Shows good creativity. Ideas are original and engaging."	"1.75 pts Intermediate
+Demonstrates some creativity. Ideas are original but not fully developed."	"1.02 pts Basic
+Displays minimal creativity. Ideas are somewhat original but lack engagement."	"0.69 pts Needs improvement
+Shows no creativity. Ideas are not original or engaging."	"0 pts
+Not presented No attempt. The link or file doesn’t
+work."	2.85 pts
+Authenticity	"0 pts Basic
+Evidence of AI-generated content/voiceover. The submission does not reflect the student's own work and identity. The task is annulled."	"0 pts Good
+Evidence of AI-generated content/voiceover. The submission does not reflect the student's own work and identity. The task is annulled."	"0 pts Intermediate
+Evidence of AI-generated content/voiceover. The submission does not reflect the student's own work and identity. The task is annulled."	"0 pts Needs
+improvement
+Evidence of AI-generated content/voiceover. The submission does not reflect the student's own work and identity. The task is annulled."	"0 pts
+Not presented
+Evidence of AI-generated content/voiceover. The submission does not reflect the student's own work and identity. The task is annulled."	"0 pts Superior
+Evidence of AI-generated content/voiceover. The submission does not reflect the student's own work and identity. The task is annulled."	0 pts
+total puntos	N/A	N/A	N/A	N/A	N/A	N/A	20
