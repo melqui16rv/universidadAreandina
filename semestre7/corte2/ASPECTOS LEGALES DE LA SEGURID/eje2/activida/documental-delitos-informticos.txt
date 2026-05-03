@@ -1,0 +1,58 @@
+según datos suministrados por el encargado de delitos informáticos de la dirección general de lucha contra el crimen organizado e Interpol el caso de las 
+interceptaciones la fachada del barrio Galerías Pero quién es Andrés Felipe Sepúlveda el internauta es solicitado por el país norteamericano por haber 
+cometido lo que consideran el mayor asalto informático a un sistema militar de todos los tiempos y el grupo de hackers animus obtiene acceso web del 
+departamento de justicia de Estados Unidos los delitos informáticos vienen y van tan rápido como la velocidad de la luz mientras seleccionen en su camino 
+a las próximas presas para su sigiloso ataque el concepto de delito informático es conocido como la ejecución de actividades cometidas ilícitamente a 
+través de manipulación de dispositivos electrónicos con o sin acceso a la red las víctimas de los ciberdelincuentes son las personas que izan de forma 
+inocente las tecnologías de la información las personas que abren correos de forma indiscriminada sin fijarse al remitente las personas que aceptan 
+invitaciones en sus redes sociales de personas que ni siquiera conocen y que son que buscan eh establecer algunos contactos profesionales pero que no 
+no son selectivas y no verifican eh la identidad de las personas que lo está contactando y inicialmente cuando estas personas comienzan a delinquir en 
+estas en esta clase de delitos son personas que que se ponen retos lo pudieron hackearle la clave del correo la clave del Facebook al hermano o a la amiga 
+o a la novia Entonces ya se les va convirtiendo en más retos inicialmente comienza así comienza como un juego según la información registrada en la página 
+oficial de la Policía Nacional se encuentran algunos delitos tradicionales como el fraude suplantación de identidad chantaje y r entonces una vez hecha la 
+afectación se procede con una denuncia Y a partir de la denuncia eh Muy seguramente la entidad del Estado que se encarga de la parte investigativa que es la 
+fiscalía general de la nación va a delegar un equipo de trabajo para que haga to la recolección de información para poder determinar el Cómo el Quién fue a 
+partir de qué herramienta la hicieron o qué fue lo que aprovecharon de la compañía Para poder ingresar desafortunadamente en Colombia no existe contra los 
+delitos informáticos existen algunos algunos artículos eh que permiten judicializar esta clase de delitos pero en muchas ocasiones los toca tipificar esos 
+delitos a la Norma Entonces ya se utilizan que los derechos de autor que la la falsedad que la suplantación a través de esta ley7 TR se establecen unas eh 
+unas penas eh desde privación e de la libertad como Bueno una una medida carcelaria eh medidas domiciliarias de acuerdo al delito que cometan de acuerdo a 
+al carácter o al carácter organizativo de la organización criminal en el cual se identifican los miembros que participan en la organización criminal eh si 
+tienen antecedentes entonces actúan unas variables que finalmente le corresponde al juez dictaminar si es una condena de cer a cuatro de de si es de cuat 
+a 8 años de prisión si es de 8 a 12 años de prisión de acuerdo al agravante y a la afectación que genera sobre los ciudadanos 666 es un ingeniero de sistemas 
+que por cuestiones de seguridad ha decidido ser llamado de esta forma él habla de la experiencia de su navegación en un desconocido escenario virtual llamado 
+la Deep web o internet profunda el Deep web es la llamada internet profunda es la llamada internet que a nosotros no tenemos acceso normalmente la gente tiene 
+acceso al 5 al 15% de las páginas de indexada Pero hay otro gran mundo en el que uno no tiene normalmente acceso y uno en esta técnicas de informática técnica
+ de desarrollo para va poder acceder a ellas estos seres anónimos que transitan este espacio virtual sin conciencia de sus acciones son vulnerables y deseados 
+ por usuarios con elevados conocimientos tecnológicos e intereses bien definidos esta profunda web es popular por manejar variados contenidos de carácter privado
+  e incluso ilegal lo que pasa es que estas personas tienen la habilidad para enmascarar esa dirección IP bueno la primera vez que ingresé la Big web fue como 
+  bien dije por motivo de seguridad informática para poder estudiar más eh lo hice por mediante la herramienta tor que más que nada son un proceso de enrutadores 
+  que permiten que tu conexión no sea rastreada O sea yo por ejemplo mi IP puede salir que esté acá en Colombia pero en verdad eh A través de la herramienta tor 
+  puede ser que yo esté conectado en Francia o esté conectado en Alemania la Deep web puede sin duda alguna ser el corazón de donde se concentran los más atroces 
+  delitos informáticos se evidencia desde venta de drogas venta de Visas pasaportes o celulares hasta la venta de órganos o material fotográfico abusivo de menores 
+  de edad eh los contenidos más buscados la db Bueno hay varios puede ser videos de asesinato eh Por no F infantil hay mucha [ __ ] eso eh venta de drogas venta de 
+  armas eh planos entales tuvimos un caso en la vivienda que que fue muy sonado que fue una persona que creó un un un un pánico económico que dijo que la vivienda 
+  y estaba a punto de quebrar y lo que hizo fue que todo el mundo se fue a la vivienda a retirar su plata y pues esa Menos mal que esa esa institución era era 
+  sólida y la descapitaliza semana casi la acaba puede que este tipo de delitos informáticos sean denunciados más no con la suficiente atención de las entidades 
+  encargadas de una u otra forma los denunciantes deben ser reconocidos como víctimas y en ese caso es obligatorio abrir un proceso de investigación para que se 
+  generen medidas por parte del ente castigando hiero de sistemas que es la primera persona que acuden venga me llegó este mensaje me llegó eh esta fotografía
+   bueno en fin pueda ser nosotros lo que hacemos Es Tom hacemos una toma de una imagen forense del del dispositivo de los dispositivos que han sido afectados 
+   para luego evaluar esa imagen forense en laboratorio esas imágenes forenses se hacen a partir de este tipo de de herramientas que tenemos acá enfrente eh 
+   este Sencillamente es lo que a nivel de informática foren se conoce como un duplicador forense eh En donde nosotros tenemos al lado izquierdo encontramos que
+    dice right blocked que significa bloqueo contra escritura quiere decir que aquí va el elemento que se ha afectado Sí y necesitamos que esa esa imagen forense 
+    que se tome no vaya a a a alterar el elemento que es objeto de estudio en este caso el disco unos programas con los cuales te pueden enviar a ti un correo y 
+    con el solo hecho de tú abrirlo automáticamente ese programa Se dispara Y entonces ellos van a tener acceso a toda la información que tú digites De hecho el 
+    mismo Google te permite tener páginas pequeñas páginas indexadas pero no a tal nivel de hecho la mayoría de la gente no tienen que accede a la mediante tor 
+    mediante otras herramientas no accede más que el 50% del contenido ya que hay que tener mucho conocimiento o hay que ser muy especialista en el tema por 
+    Acceder al contenido más profundo de esta web cualquiera de nosotros podemos cualquiera hasta la persona más más que se que tenga mayor conocimiento lo que 
+    pasa es que las probabilidades van a bajar por tal motivo se debe ser muy cauteloso Al momento de hacer uso de cualquier medio tecnológico pues la falta de 
+    cultura informática es uno de los principales factores para que se cometan tales delitos preventivo que es evaluar su sistema de seguridad lo hacen a través 
+    de contratación de servicios como etical hacking para qué Para que precisamente de manera controlada personas con conocimiento específico en el tema de hackeo
+    puedan tratar de acceder a su sistemas de información y de esa manera se identifiquen Cuáles son los huecos Cuáles son los puntos por los cuales podría una 
+    persona malintencionada Ingresar a su sistema básicamente la primera recomendación es que primero controlen la información que publican en las redes sociales 
+    o que publican en internet teniendo en cuenta que una vez publiquemos información en cada una de nuestras redes sociales ya vamos a perder total dominio de 
+    esa información por lo cual antes de de publicar alguna información alguna fotografía pensemos en que esa información puede utilizar puede ser utilizada por 
+    otra persona en nuestra contra entonces La idea es que cada uno sea responsable de la información que publica o que no publica De igual forma hay que tener 
+    responsabilidad frente a los archivos o correos electrónicos que se abren teniendo en cuenta que hay mucho ciberdelincuente existe mucho ciberdelincuente que 
+    emite o difunde correos electrónicos con malware Por lo cual nosotros recomendamos no abrir correos electrónicos de remitentes que no se conozcan o verificar
+     la identidad de esa persona para no ser víctima de los delincuentes verificar siempre los canales asociados a la policía más formas de delito varían con el
+      paso del tiempo mientras poco a poco se van creando las leyes para castigar a los delincuentes que van borrando su rastro
